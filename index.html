@@ -2,165 +2,202 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0c1110" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#11100e" />
   <meta name="description" content="Webcómic interactivo sobre la evolución de la alimentación humana." />
-  <title>Evolución de los alimentos | Webcómic interactivo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Evolución de los alimentos — Webcómic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Oswald:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-  <button class="sound-button" id="soundButton" type="button" aria-label="Activar o desactivar sonidos">🔇</button>
+  <div class="reading-progress"><span id="progressBar"></span></div>
 
-  <header class="hero" id="inicio">
-    <div class="hero-orbit orbit-a"></div>
-    <div class="hero-orbit orbit-b"></div>
-    <div class="grain"></div>
-    <div class="hero-content reveal">
-      <p class="eyebrow">Una historia que empezó mucho antes de los supermercados</p>
-      <h1>Evolución<br><em>de los alimentos</em></h1>
-      <p class="hero-copy">Un viaje interactivo desde la recolección y la caza hasta la nutrición, la tecnología y la alimentación sostenible.</p>
-      <a class="cta" href="#prehistoria">Comenzar el viaje <span>↓</span></a>
-    </div>
-    <div class="hero-food food-a" aria-hidden="true">🍎</div>
-    <div class="hero-food food-b" aria-hidden="true">🌾</div>
-    <div class="hero-food food-c" aria-hidden="true">🥬</div>
-    <div class="scroll-hint" aria-hidden="true"><span></span>Desliza para viajar en el tiempo</div>
+  <header class="topbar">
+    <a class="brand" href="#portada"><span>EVOLUCIÓN</span><small>DE LOS ALIMENTOS</small></a>
+    <nav aria-label="Capítulos">
+      <a href="#prehistoria">01</a><a href="#agricultura">02</a><a href="#comercio">03</a><a href="#industria">04</a><a href="#ciencia">05</a><a href="#actualidad">06</a>
+    </nav>
+    <button id="soundButton" class="sound" type="button" aria-label="Activar sonido">SONIDO: OFF</button>
   </header>
 
   <main>
-    <nav class="timeline" aria-label="Línea de tiempo">
-      <a href="#prehistoria" data-section="prehistoria"><span>01</span> Prehistoria</a>
-      <a href="#agricultura" data-section="agricultura"><span>02</span> Agricultura</a>
-      <a href="#comercio" data-section="comercio"><span>03</span> Comercio</a>
-      <a href="#industria" data-section="industria"><span>04</span> Industria</a>
-      <a href="#ciencia" data-section="ciencia"><span>05</span> Ciencia</a>
-      <a href="#actualidad" data-section="actualidad"><span>06</span> Actualidad</a>
-    </nav>
-
-    <section class="chapter prehistory" id="prehistoria" data-chapter="01">
-      <div class="chapter-bg"></div>
-      <div class="chapter-grid">
-        <div class="chapter-copy reveal">
-          <p class="chapter-number">CAPÍTULO 01</p>
-          <h2>Cuando comer era <em>sobrevivir</em></h2>
-          <p>Los primeros seres humanos se alimentaban con lo que encontraban en su entorno: frutos, raíces, semillas y otros recursos naturales. Con el tiempo aprendieron a cazar y pescar, ampliando sus fuentes de alimento.</p>
-          <div class="fact"><strong>Idea clave</strong><span>La alimentación dependía directamente de la naturaleza y de la capacidad para recolectar, cazar y pescar.</span></div>
-        </div>
-        <div class="comic-stage reveal" aria-label="Escena ilustrada de la prehistoria">
-          <img class="scene-art" src="assets/prehistoria.svg" alt="Recolector prehistórico junto a una fogata, frutos y peces" />
-          <div class="speech speech-left">“Aquí no hay menú… hoy comemos lo que podamos encontrar.”</div>
-          <button class="discover" data-pop="prehistoria">Toca para descubrir</button>
-        </div>
+    <section class="cover" id="portada">
+      <div class="cover-grid" aria-hidden="true">
+        <div class="cover-panel cp-one"><img src="assets/prehistoria.svg" alt=""></div>
+        <div class="cover-panel cp-two"><img src="assets/agricultura.svg" alt=""></div>
+        <div class="cover-panel cp-three"><img src="assets/actualidad.svg" alt=""></div>
+      </div>
+      <div class="cover-ink"></div>
+      <div class="cover-copy reveal">
+        <p class="kicker">UN CÓMIC INTERACTIVO SOBRE NUESTRA HISTORIA</p>
+        <h1><span>Evolución</span><b>de los</b><strong>Alimentos</strong></h1>
+        <p class="cover-lead">De sobrevivir con lo que daba la naturaleza a preguntarnos cómo alimentaremos al planeta mañana.</p>
+        <a href="#prehistoria" class="start-btn">EMPEZAR EL VIAJE <i>↓</i></a>
+      </div>
+      <div class="cover-note note-left">MISMAS NECESIDADES.<br>DISTINTOS MUNDOS.</div>
+      <div class="cover-note note-right">LA COMIDA<br>TAMBIÉN CUENTA<br>HISTORIAS.</div>
+      <div class="chapter-strip">
+        <a href="#prehistoria"><span>01</span><b>Sabores primitivos</b></a>
+        <a href="#agricultura"><span>02</span><b>La gran semilla</b></a>
+        <a href="#comercio"><span>03</span><b>La comida viaja</b></a>
+        <a href="#industria"><span>04</span><b>Máquinas y fábricas</b></a>
+        <a href="#ciencia"><span>05</span><b>Nutrición y ciencia</b></a>
+        <a href="#actualidad"><span>06</span><b>¿Qué sigue?</b></a>
       </div>
     </section>
 
-    <section class="bridge seed-bridge" aria-hidden="true">
-      <div class="seed">●</div><div class="stem"></div><div class="leaf leaf-l"></div><div class="leaf leaf-r"></div>
-      <p>Entonces ocurrió algo que cambió nuestra historia para siempre…</p>
+    <section class="comic-page era-pre" id="prehistoria" data-era="Prehistoria">
+      <div class="page-heading reveal">
+        <span class="chapter-tag">CAPÍTULO 01</span>
+        <h2>CUANDO COMER ERA <em>SOBREVIVIR</em></h2>
+        <p>Antes de cultivos y mercados, cada comida dependía del entorno.</p>
+      </div>
+      <div class="panels pre-layout">
+        <figure class="panel hero-panel reveal">
+          <img src="assets/prehistoria.svg" alt="Escena de alimentación en la prehistoria">
+          <figcaption class="caption yellow">AL PRINCIPIO, LA NATURALEZA ERA NUESTRA DESPENSA.</figcaption>
+          <div class="bubble left">“Hoy comemos lo que podamos encontrar.”</div>
+          <div class="sfx">CRACK!</div>
+        </figure>
+        <article class="panel paper-panel reveal">
+          <span class="panel-no">1</span>
+          <h3>RECOLECTAR</h3>
+          <p>Frutos, raíces y semillas fueron alimentos básicos porque podían encontrarse directamente en el entorno.</p>
+        </article>
+        <article class="panel dark-panel reveal">
+          <span class="panel-no">2</span>
+          <h3>CAZAR Y PESCAR</h3>
+          <p>Con nuevas estrategias y herramientas, los grupos humanos ampliaron sus fuentes de alimento y proteínas.</p>
+        </article>
+        <button class="panel action-panel reveal" data-toast="La alimentación prehistórica dependía del clima, el territorio y la habilidad para conseguir alimento.">
+          <b>TOCA PARA DESCUBRIR</b><span>¿Qué condicionaba el menú?</span>
+        </button>
+      </div>
+      <div class="page-turn"><span>UNA SEMILLA CAMBIARÍA TODO…</span></div>
     </section>
 
-    <section class="chapter agriculture" id="agricultura" data-chapter="02">
-      <div class="chapter-bg"></div>
-      <div class="chapter-grid reverse">
-        <div class="chapter-copy reveal">
-          <p class="chapter-number">CAPÍTULO 02</p>
-          <h2>La revolución de <em>una semilla</em></h2>
-          <p>La agricultura permitió cultivar plantas y domesticar animales. Así, las comunidades pudieron contar con alimentos de manera más constante, establecerse en un lugar y formar poblaciones cada vez mayores.</p>
-          <div class="fact"><strong>Gran cambio</strong><span>De buscar comida cada día a producirla y almacenarla.</span></div>
-        </div>
-        <div class="comic-stage field-stage reveal" aria-label="Escena ilustrada del nacimiento de la agricultura">
-          <img class="scene-art" src="assets/agricultura.svg" alt="Agricultor, cultivos y una aldea temprana" />
-          <div class="speech speech-right">“Si sembramos hoy, podremos comer mañana.”</div>
-          <button class="grow-button" id="growButton">🌱 Hacer crecer el cultivo</button>
-        </div>
+    <section class="comic-page era-farm" id="agricultura" data-era="Agricultura">
+      <div class="page-heading reveal">
+        <span class="chapter-tag">CAPÍTULO 02</span>
+        <h2>EL NACIMIENTO DE <em>LA AGRICULTURA</em></h2>
+        <p>De buscar comida cada día a producirla, cuidarla y almacenarla.</p>
+      </div>
+      <div class="panels farm-layout">
+        <figure class="panel hero-panel farm-hero reveal" id="farmPanel">
+          <img src="assets/agricultura.svg" alt="Cultivos y primeras comunidades agrícolas">
+          <figcaption class="caption cream">SEMBRAR HOY SIGNIFICABA PODER COMER MAÑANA.</figcaption>
+          <div class="bubble right">“Podemos quedarnos aquí y construir un hogar.”</div>
+          <button id="growButton" class="comic-button" type="button">HACER CRECER EL CULTIVO</button>
+        </figure>
+        <article class="panel paper-panel reveal">
+          <h3>UN CAMBIO ENORME</h3>
+          <p>Las personas comenzaron a cultivar plantas y domesticar animales. El alimento se volvió más constante y las comunidades pudieron establecerse.</p>
+          <div class="stamp">PRODUCIR<br>+ GUARDAR</div>
+        </article>
+        <article class="panel crop-list reveal">
+          <h3>PEQUEÑOS CULTIVOS,<br>GRANDES CAMBIOS</h3>
+          <ul><li>Granos</li><li>Legumbres</li><li>Frutas</li><li>Animales domesticados</li></ul>
+        </article>
       </div>
     </section>
 
-    <section class="chapter trade" id="comercio" data-chapter="03">
-      <div class="chapter-bg"></div>
-      <div class="chapter-grid">
-        <div class="chapter-copy reveal">
-          <p class="chapter-number">CAPÍTULO 03</p>
-          <h2>Los alimentos empiezan a <em>viajar</em></h2>
-          <p>Cuando las civilizaciones crecieron, también aumentó el intercambio entre regiones. Ingredientes, técnicas y costumbres culinarias comenzaron a viajar junto con comerciantes y exploradores.</p>
-          <div class="fact"><strong>Resultado</strong><span>Nuevos sabores llegaron a distintas culturas y las cocinas comenzaron a mezclarse.</span></div>
-        </div>
-        <div class="comic-stage map-stage reveal" aria-label="Escena ilustrada del comercio de alimentos">
-          <img class="scene-art" src="assets/comercio.svg" alt="Barco, mercado y rutas comerciales de alimentos" />
-          <div class="speech speech-left">“Una receta también puede cruzar fronteras.”</div>
-        </div>
+    <section class="comic-page era-trade" id="comercio" data-era="Comercio">
+      <div class="page-heading reveal">
+        <span class="chapter-tag">CAPÍTULO 03</span>
+        <h2>LOS ALIMENTOS EMPIEZAN A <em>VIAJAR</em></h2>
+        <p>El intercambio conectó pueblos, ingredientes y maneras de cocinar.</p>
+      </div>
+      <div class="panels trade-layout">
+        <figure class="panel wide-panel reveal">
+          <img src="assets/comercio.svg" alt="Mercados y rutas de intercambio">
+          <figcaption class="caption yellow">UNA RECETA TAMBIÉN PUEDE CRUZAR FRONTERAS.</figcaption>
+          <div class="bubble left">“Yo traigo grano. ¿Qué me ofreces?”</div>
+          <div class="bubble right small">“Sal, pescado… y una idea nueva.”</div>
+        </figure>
+        <article class="panel map-card reveal">
+          <h3>LAS RUTAS LLEVABAN MÁS QUE COMIDA</h3>
+          <div class="route-line"><i></i><i></i><i></i><i></i></div>
+          <p>También viajaban técnicas, costumbres y conocimientos culinarios.</p>
+        </article>
+        <article class="panel quote-panel reveal"><q>Cuando un alimento viaja, una cultura también cambia.</q></article>
       </div>
     </section>
 
-    <section class="chapter industry" id="industria" data-chapter="04">
-      <div class="chapter-bg"></div>
-      <div class="chapter-grid reverse">
-        <div class="chapter-copy reveal">
-          <p class="chapter-number">CAPÍTULO 04</p>
-          <h2>Máquinas, fábricas y <em>producción masiva</em></h2>
-          <p>La Revolución Industrial transformó la producción y distribución de alimentos. La mecanización agrícola, los nuevos transportes y las técnicas de conservación permitieron llevar comida a más personas y a mayores distancias.</p>
-          <div class="fact"><strong>Nuevo escenario</strong><span>Más variedad y disponibilidad, junto con el crecimiento de los alimentos procesados.</span></div>
-        </div>
-        <div class="comic-stage factory-stage reveal" aria-label="Escena ilustrada de la Revolución Industrial">
-          <img class="scene-art" src="assets/industria.svg" alt="Fábrica y tren representando la producción y distribución masiva" />
-          <div class="speech speech-right">“Ahora podemos producir más… y llevarlo mucho más lejos.”</div>
-        </div>
+    <section class="comic-page era-industry" id="industria" data-era="Revolución Industrial">
+      <div class="page-heading reveal">
+        <span class="chapter-tag">CAPÍTULO 04</span>
+        <h2>MÁQUINAS, FÁBRICAS Y <em>PRODUCCIÓN MASIVA</em></h2>
+        <p>La comida comenzó a producirse, conservarse y distribuirse a otra escala.</p>
+      </div>
+      <div class="panels industry-layout">
+        <figure class="panel hero-panel reveal">
+          <img src="assets/industria.svg" alt="Fábrica y transporte industrial de alimentos">
+          <figcaption class="caption cream">MÁS PRODUCCIÓN. MÁS DISTANCIA. MÁS DISPONIBILIDAD.</figcaption>
+          <div class="sfx steel">CLANK!</div>
+        </figure>
+        <article class="panel dark-panel reveal"><h3>LA MÁQUINA ACELERA TODO</h3><p>La mecanización agrícola permitió aumentar la producción y reducir parte del trabajo manual.</p></article>
+        <article class="panel paper-panel reveal"><h3>CONSERVAR Y TRANSPORTAR</h3><p>Nuevas técnicas de conservación y mejores transportes hicieron posible llevar alimentos más lejos.</p></article>
+        <article class="panel warning-panel reveal"><b>CAMBIO DE ÉPOCA</b><p>También crecieron los alimentos procesados y la producción en masa.</p></article>
       </div>
     </section>
 
-    <section class="chapter science" id="ciencia" data-chapter="05">
-      <div class="chapter-bg"></div>
-      <div class="chapter-grid">
-        <div class="chapter-copy reveal">
-          <p class="chapter-number">CAPÍTULO 05</p>
-          <h2>La ciencia descubre <em>qué hay dentro</em></h2>
-          <p>El estudio de la nutrición permitió comprender mejor los nutrientes y la importancia de una alimentación equilibrada. Al mismo tiempo, la tecnología alimentaria abrió nuevas posibilidades para conservar, procesar y producir alimentos.</p>
-          <div class="fact"><strong>Aprendizaje</strong><span>No basta con comer: también importa qué nutrientes recibe nuestro cuerpo.</span></div>
-        </div>
-        <div class="comic-stage lab-stage reveal" aria-label="Escena ilustrada de ciencia y nutrición">
-          <img class="scene-art" src="assets/ciencia.svg" alt="Laboratorio, microscopio y estudio de nutrientes" />
-          <div class="nutrition-wheel" id="nutritionWheel" aria-label="Explora grupos de alimentos">
-            <button data-info="Vitaminas y minerales ayudan a regular múltiples funciones del organismo." aria-label="Vegetales">🥬</button>
-            <button data-info="Las proteínas participan en el crecimiento y reparación de tejidos." aria-label="Proteínas">🥚</button>
-            <button data-info="Los carbohidratos son una fuente importante de energía." aria-label="Carbohidratos">🍞</button>
-            <button data-info="Las frutas aportan agua, fibra, vitaminas y otros compuestos." aria-label="Frutas">🍎</button>
+    <section class="comic-page era-science" id="ciencia" data-era="Ciencia y nutrición">
+      <div class="page-heading reveal">
+        <span class="chapter-tag">CAPÍTULO 05</span>
+        <h2>LA CIENCIA DESCUBRE <em>QUÉ HAY DENTRO</em></h2>
+        <p>Ya no solo importaba comer: empezamos a entender qué necesitaba el cuerpo.</p>
+      </div>
+      <div class="panels science-layout">
+        <figure class="panel science-hero reveal">
+          <img src="assets/ciencia.svg" alt="Ciencia, laboratorio y nutrición">
+          <figcaption class="caption yellow">NUTRIENTES: PEQUEÑOS PROTAGONISTAS, GRANDES FUNCIONES.</figcaption>
+          <div class="bubble right">“La ciencia también cambió nuestra mesa.”</div>
+        </figure>
+        <article class="panel nutrient-panel reveal">
+          <h3>EXPLORA EL PLATO</h3>
+          <div class="nutrient-buttons" id="nutritionWheel">
+            <button data-info="Los carbohidratos son una fuente importante de energía.">ENERGÍA</button>
+            <button data-info="Las proteínas participan en el crecimiento y reparación de tejidos.">PROTEÍNAS</button>
+            <button data-info="Vitaminas y minerales ayudan a regular múltiples funciones del organismo.">MICRONUTRIENTES</button>
+            <button data-info="Frutas y vegetales aportan agua, fibra, vitaminas y otros compuestos.">FRUTAS Y VEGETALES</button>
           </div>
-          <p class="nutrition-info" id="nutritionInfo">Toca un alimento para aprender algo.</p>
-        </div>
+          <p id="nutritionInfo" class="nutrition-info">Pulsa una categoría para descubrir su papel.</p>
+        </article>
+        <article class="panel tech-panel reveal"><h3>TECNOLOGÍA ALIMENTARIA</h3><p>Conservar, procesar y producir alimentos abrió posibilidades nuevas, desde la refrigeración hasta técnicas modernas de biotecnología.</p></article>
       </div>
     </section>
 
-    <section class="chapter present" id="actualidad" data-chapter="06">
-      <div class="chapter-bg"></div>
-      <div class="chapter-grid reverse">
-        <div class="chapter-copy reveal">
-          <p class="chapter-number">CAPÍTULO 06</p>
-          <h2>Comer pensando también en <em>el mañana</em></h2>
-          <p>Hoy existe mayor interés por una alimentación saludable y sostenible. Se promueve el consumo de productos frescos y naturales, una dieta equilibrada y decisiones que reduzcan el impacto ambiental.</p>
-          <div class="fact"><strong>Desafío actual</strong><span>Aprovechar la tecnología sin olvidar la salud, la diversidad y la sostenibilidad.</span></div>
-        </div>
-        <div class="comic-stage future-stage reveal" aria-label="Escena ilustrada sobre alimentación sostenible">
-          <img class="scene-art" src="assets/actualidad.svg" alt="Planeta, agricultura urbana y sostenibilidad" />
-          <div class="speech speech-right">“Nuestra próxima gran decisión no es solo qué comer… sino cómo producirlo.”</div>
-        </div>
+    <section class="comic-page era-now" id="actualidad" data-era="Actualidad y futuro">
+      <div class="page-heading reveal">
+        <span class="chapter-tag">CAPÍTULO 06</span>
+        <h2>COMER PENSANDO EN <em>EL MAÑANA</em></h2>
+        <p>Salud, sostenibilidad y tecnología ahora comparten la misma mesa.</p>
+      </div>
+      <div class="panels now-layout">
+        <figure class="panel future-hero reveal">
+          <img src="assets/actualidad.svg" alt="Alimentación saludable y sostenible">
+          <figcaption class="caption cream">EL PRÓXIMO CAPÍTULO TODAVÍA LO ESTAMOS ESCRIBIENDO.</figcaption>
+          <div class="bubble left">“¿Y si comer mejor también significa cuidar el planeta?”</div>
+        </figure>
+        <article class="panel manifesto reveal"><span>HOY</span><h3>FRESCO · EQUILIBRADO · SOSTENIBLE</h3><p>Crece el interés por productos frescos y naturales, dietas equilibradas y sistemas de producción con menor impacto ambiental.</p></article>
+        <article class="panel future-card reveal"><h3>¿QUÉ COMEREMOS MAÑANA?</h3><p>Agricultura vertical, nuevas proteínas, biotecnología y sistemas más eficientes podrían transformar otra vez nuestra alimentación.</p></article>
       </div>
     </section>
 
-    <section class="finale" id="futuro">
-      <div class="finale-content reveal">
-        <p class="eyebrow">El viaje continúa</p>
-        <h2>¿Cómo crees que<br><em>comeremos dentro de 100 años?</em></h2>
-        <p>Durante miles de años, nuestra forma de alimentarnos ha cambiado junto con la sociedad, la ciencia y la tecnología. El próximo capítulo todavía está por escribirse.</p>
-        <div class="future-question">
-          <input id="futureInput" maxlength="120" placeholder="Escribe tu idea del futuro…" aria-label="Tu idea sobre la alimentación del futuro" />
-          <button id="futureButton" type="button">Guardar mi predicción</button>
+    <section class="final-page" id="futuro">
+      <div class="final-ink"></div>
+      <div class="final-inner reveal">
+        <span class="chapter-tag">CONTINUARÁ…</span>
+        <h2>¿CÓMO CREES QUE<br><em>COMEREMOS DENTRO DE 100 AÑOS?</em></h2>
+        <p>Durante miles de años, la alimentación evolucionó junto con la sociedad. Tu idea puede ser la siguiente viñeta.</p>
+        <div class="prediction">
+          <input id="futureInput" maxlength="140" placeholder="Escribe tu predicción…" aria-label="Predicción sobre la alimentación del futuro">
+          <button id="futureButton" type="button">AÑADIR MI VIÑETA</button>
         </div>
-        <p class="future-result" id="futureResult"></p>
-        <a class="restart" href="#inicio">↺ Volver al inicio</a>
+        <blockquote id="futureResult"></blockquote>
+        <a class="restart" href="#portada">VOLVER A LA PORTADA ↑</a>
       </div>
     </section>
   </main>
