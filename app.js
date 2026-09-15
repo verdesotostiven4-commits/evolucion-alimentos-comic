@@ -7,6 +7,19 @@ const reveals = [...document.querySelectorAll('.reveal')];
 let soundEnabled = false;
 let audioContext = null;
 
+// Keep the chapter illustrations crisp and responsive without another dependency.
+document.querySelectorAll('.scene-art').forEach(img => {
+  Object.assign(img.style, {
+    position: 'absolute',
+    inset: '0',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    display: 'block',
+    transition: 'transform .8s cubic-bezier(.2,.8,.2,1), filter .8s ease'
+  });
+});
+
 function updateProgress() {
   const scrollTop = window.scrollY;
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -86,6 +99,11 @@ growButton?.addEventListener('click', () => {
   const stage = growButton.closest('.field-stage');
   stage.classList.toggle('grown');
   const grown = stage.classList.contains('grown');
+  const art = stage.querySelector('.scene-art');
+  if (art) {
+    art.style.transform = grown ? 'scale(1.055)' : 'scale(1)';
+    art.style.filter = grown ? 'saturate(1.12) brightness(1.04)' : 'none';
+  }
   growButton.textContent = grown ? '🌾 ¡Cosecha lista!' : '🌱 Hacer crecer el cultivo';
   tone(grown ? 660 : 460, 0.1);
   showToast(grown ? 'La agricultura permitió producir y almacenar alimentos.' : 'El cultivo vuelve a comenzar.');
@@ -102,6 +120,16 @@ const futureInput = document.getElementById('futureInput');
 const futureButton = document.getElementById('futureButton');
 const futureResult = document.getElementById('futureResult');
 
+function readPrediction() {
+  try { return localStorage.getItem('prediccion-alimentos-futuro'); }
+  catch (_) { return null; }
+}
+
+function savePrediction(value) {
+  try { localStorage.setItem('prediccion-alimentos-futuro', value); return true; }
+  catch (_) { return false; }
+}
+
 futureButton?.addEventListener('click', () => {
   const value = futureInput.value.trim();
   if (!value) {
@@ -109,13 +137,15 @@ futureButton?.addEventListener('click', () => {
     tone(260, 0.1, 'triangle');
     return;
   }
-  localStorage.setItem('prediccion-alimentos-futuro', value);
-  futureResult.textContent = `Predicción guardada: “${value}”`;
+  const saved = savePrediction(value);
+  futureResult.textContent = saved
+    ? `Predicción guardada: “${value}”`
+    : `Tu predicción: “${value}”`;
   tone(640, 0.12);
   setTimeout(() => tone(800, 0.12), 100);
 });
 
-const savedPrediction = localStorage.getItem('prediccion-alimentos-futuro');
+const savedPrediction = readPrediction();
 if (savedPrediction && futureInput && futureResult) {
   futureInput.value = savedPrediction;
   futureResult.textContent = `Tu predicción anterior: “${savedPrediction}”`;
@@ -156,7 +186,6 @@ window.addEventListener('resize', updateProgress);
 updateProgress();
 parallax();
 
-// Reveal hero immediately after first paint.
 requestAnimationFrame(() => {
   document.querySelector('.hero .reveal')?.classList.add('visible');
 });
