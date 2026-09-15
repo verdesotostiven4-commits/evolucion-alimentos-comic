@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Oswald:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="comic-upgrade.css" />
 </head>
 <body>
   <div class="reading-progress"><span id="progressBar"></span></div>
@@ -33,9 +34,11 @@
       <div class="cover-copy reveal">
         <p class="kicker">UN CÓMIC INTERACTIVO SOBRE NUESTRA HISTORIA</p>
         <h1><span>Evolución</span><b>de los</b><strong>Alimentos</strong></h1>
-        <p class="cover-lead">De sobrevivir con lo que daba la naturaleza a preguntarnos cómo alimentaremos al planeta mañana.</p>
-        <a href="#prehistoria" class="start-btn">EMPEZAR EL VIAJE <i>↓</i></a>
+        <p class="cover-lead">Un viaje de miles de años: de recolectar frutos en la naturaleza a imaginar los alimentos del futuro.</p>
+        <a href="#prehistoria" class="start-btn">¡COMENZAR EL VIAJE! <i>→</i></a>
       </div>
+      <img class="cover-guide" src="assets/lia.svg" alt="Lía, guía del webcómic Evolución de los alimentos">
+      <div class="guide-bubble">¡Hola! Soy Lía. Te acompaño a descubrir cómo la comida transformó nuestra historia.</div>
       <div class="cover-note note-left">MISMAS NECESIDADES.<br>DISTINTOS MUNDOS.</div>
       <div class="cover-note note-right">LA COMIDA<br>TAMBIÉN CUENTA<br>HISTORIAS.</div>
       <div class="chapter-strip">
@@ -49,7 +52,7 @@
     </section>
 
     <section class="comic-page era-pre" id="prehistoria" data-era="Prehistoria">
-      <div class="page-heading reveal">
+      <div class="page-heading reveal" data-era="Prehistoria · sobrevivir en la naturaleza">
         <span class="chapter-tag">CAPÍTULO 01</span>
         <h2>CUANDO COMER ERA <em>SOBREVIVIR</em></h2>
         <p>Antes de cultivos y mercados, cada comida dependía del entorno.</p>
@@ -79,7 +82,7 @@
     </section>
 
     <section class="comic-page era-farm" id="agricultura" data-era="Agricultura">
-      <div class="page-heading reveal">
+      <div class="page-heading reveal" data-era="Agricultura · producir y almacenar">
         <span class="chapter-tag">CAPÍTULO 02</span>
         <h2>EL NACIMIENTO DE <em>LA AGRICULTURA</em></h2>
         <p>De buscar comida cada día a producirla, cuidarla y almacenarla.</p>
@@ -104,7 +107,7 @@
     </section>
 
     <section class="comic-page era-trade" id="comercio" data-era="Comercio">
-      <div class="page-heading reveal">
+      <div class="page-heading reveal" data-era="Comercio · ingredientes que cruzan fronteras">
         <span class="chapter-tag">CAPÍTULO 03</span>
         <h2>LOS ALIMENTOS EMPIEZAN A <em>VIAJAR</em></h2>
         <p>El intercambio conectó pueblos, ingredientes y maneras de cocinar.</p>
@@ -126,7 +129,7 @@
     </section>
 
     <section class="comic-page era-industry" id="industria" data-era="Revolución Industrial">
-      <div class="page-heading reveal">
+      <div class="page-heading reveal" data-era="Revolución Industrial · producir para muchos">
         <span class="chapter-tag">CAPÍTULO 04</span>
         <h2>MÁQUINAS, FÁBRICAS Y <em>PRODUCCIÓN MASIVA</em></h2>
         <p>La comida comenzó a producirse, conservarse y distribuirse a otra escala.</p>
@@ -144,7 +147,7 @@
     </section>
 
     <section class="comic-page era-science" id="ciencia" data-era="Ciencia y nutrición">
-      <div class="page-heading reveal">
+      <div class="page-heading reveal" data-era="Ciencia · comprender lo que comemos">
         <span class="chapter-tag">CAPÍTULO 05</span>
         <h2>LA CIENCIA DESCUBRE <em>QUÉ HAY DENTRO</em></h2>
         <p>Ya no solo importaba comer: empezamos a entender qué necesitaba el cuerpo.</p>
@@ -170,7 +173,7 @@
     </section>
 
     <section class="comic-page era-now" id="actualidad" data-era="Actualidad y futuro">
-      <div class="page-heading reveal">
+      <div class="page-heading reveal" data-era="Actualidad · salud, sostenibilidad y futuro">
         <span class="chapter-tag">CAPÍTULO 06</span>
         <h2>COMER PENSANDO EN <em>EL MAÑANA</em></h2>
         <p>Salud, sostenibilidad y tecnología ahora comparten la misma mesa.</p>
