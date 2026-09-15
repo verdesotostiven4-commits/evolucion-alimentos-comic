@@ -1,1 +1,56 @@
-const sceneMap={'assets/prehistoria.svg':'assets/prehistoria-v2.svg','assets/agricultura.svg':'assets/agricultura-v2.svg','assets/comercio.svg':'assets/comercio-v2.svg','assets/industria.svg':'assets/industria-v2.svg','assets/ciencia.svg':'assets/ciencia-v2.svg','assets/actualidad.svg':'assets/actualidad-v2.svg'};document.querySelectorAll('img').forEach(img=>{const src=img.getAttribute('src');if(sceneMap[src]){img.src=sceneMap[src];img.classList.add('cinematic-scene')}});const progressBar=document.getElementById('progressBar');const soundButton=document.getElementById('soundButton');const toast=document.getElementById('toast');const revealEls=[...document.querySelectorAll('.reveal')];const pages=[...document.querySelectorAll('.comic-page')];const navLinks=[...document.querySelectorAll('.topbar nav a')];let soundOn=false;let audioCtx=null;function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;const ratio=max>0?Math.min(1,Math.max(0,scrollY/max)):0;progressBar.style.width=`${ratio*100}%`}function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),2400)}function tone(freq=520,duration=.06){if(!soundOn)return;try{audioCtx||=new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator();const g=audioCtx.createGain();o.type='triangle';o.frequency.value=freq;g.gain.setValueAtTime(.025,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch{}}const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll?.('.cinematic-scene').forEach(img=>img.classList.add('scene-live'))}})},{threshold:.14});revealEls.forEach(el=>revealObserver.observe(el));const pageObserver=new IntersectionObserver(entries=>{const active=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!active)return;const id=active.target.id;navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')===`#${id}`))},{rootMargin:'-25% 0px -55% 0px',threshold:[.05,.2,.4]});pages.forEach(page=>pageObserver.observe(page));soundButton?.addEventListener('click',()=>{soundOn=!soundOn;soundButton.textContent=`SONIDO: ${soundOn?'ON':'OFF'}`;soundButton.setAttribute('aria-label',soundOn?'Desactivar sonido':'Activar sonido');if(soundOn){tone(500,.08);setTimeout(()=>tone(690,.08),90);showToast('Sonido activado')}else showToast('Sonido desactivado')});document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>tone(430,.045)));document.querySelectorAll('[data-toast]').forEach(btn=>btn.addEventListener('click',()=>{tone(590,.08);showToast(btn.dataset.toast)}));const growButton=document.getElementById('growButton');growButton?.addEventListener('click',()=>{const panel=document.getElementById('farmPanel');const grown=panel.classList.toggle('grown');growButton.textContent=grown?'COSECHA LISTA — VOLVER':'HACER CRECER EL CULTIVO';tone(grown?690:470,.09);showToast(grown?'La agricultura permitió producir y almacenar alimentos con mayor regularidad.':'El cultivo vuelve a comenzar.')});document.querySelectorAll('#nutritionWheel button').forEach((button,index)=>button.addEventListener('click',()=>{document.querySelectorAll('#nutritionWheel button').forEach(b=>b.classList.remove('active'));button.classList.add('active');document.getElementById('nutritionInfo').textContent=button.dataset.info;tone(520+index*55,.06)}));const futureInput=document.getElementById('futureInput');const futureButton=document.getElementById('futureButton');const futureResult=document.getElementById('futureResult');function safeGet(){try{return localStorage.getItem('comic-prediccion-alimentos')}catch{return null}}function safeSet(value){try{localStorage.setItem('comic-prediccion-alimentos',value);return true}catch{return false}}const saved=safeGet();if(saved&&futureInput&&futureResult){futureInput.value=saved;futureResult.textContent=`“${saved}”`}futureButton?.addEventListener('click',()=>{const value=futureInput.value.trim();if(!value){showToast('Escribe primero tu predicción.');tone(270,.08);return}safeSet(value);futureResult.textContent=`“${value}”`;showToast('Tu predicción quedó guardada en la última viñeta.');tone(650,.08);setTimeout(()=>tone(820,.08),90)});let ticking=false;function parallax(){document.querySelectorAll('.cover-panel').forEach((panel,i)=>{const speed=.025+i*.012;panel.style.translate=`0 ${scrollY*speed}px`});document.querySelectorAll('.comic-page').forEach((page,i)=>{const rect=page.getBoundingClientRect();const img=page.querySelector('.cinematic-scene');if(!img)return;const p=Math.max(-1,Math.min(1,(innerHeight/2-(rect.top+rect.height/2))/innerHeight));img.style.setProperty('--scene-y',`${p*10}px`)})}function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(()=>{updateProgress();parallax();ticking=false})}addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',updateProgress);updateProgress();parallax();requestAnimationFrame(()=>document.querySelector('.cover .reveal')?.classList.add('visible'));
+const clamp=(n,min=0,max=1)=>Math.min(max,Math.max(min,n));
+const progress=document.getElementById('globalProgress');
+const scenes=[...document.querySelectorAll('[data-motion-scene]')];
+const navLinks=[...document.querySelectorAll('.chapter-nav a')];
+const toast=document.getElementById('toast');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let raf=0, soundOn=false, audioCtx=null;
+
+function showToast(text){toast.textContent=text;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1800)}
+function tone(freq=480,d=.055){if(!soundOn)return;try{audioCtx||=new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='triangle';o.frequency.value=freq;g.gain.setValueAtTime(.018,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+d);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+d)}catch{}}
+
+function beatOpacity(p,at){const enter=clamp((p-at)/.10);const leave=at>.78?1:clamp((1-p)/.07);return Math.min(enter,leave)}
+function update(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=`${max?clamp(scrollY/max)*100:0}%`;
+  let active=null,best=Infinity;
+  for(const scene of scenes){
+    const rect=scene.getBoundingClientRect();
+    const travel=Math.max(1,scene.offsetHeight-innerHeight);
+    const p=clamp(-rect.top/travel);
+    scene.style.setProperty('--p',p.toFixed(4));
+    const stage=scene.querySelector('.sticky-stage');
+    const art=scene.querySelector('.scene-media img,.scene-poster');
+    if(art&&!reduceMotion){
+      const dir=scene.dataset.direction;
+      const dx=dir==='right'?(p-.5)*34:dir==='left'?(0.5-p)*34:0;
+      const dy=dir==='up'?(0.5-p)*28:(p-.5)*8;
+      const scale=1.015+p*.055;
+      art.style.setProperty('--art-x',`${dx}px`);art.style.setProperty('--art-y',`${dy}px`);art.style.setProperty('--art-scale',scale.toFixed(3));
+    }
+    scene.querySelectorAll('.beat').forEach(el=>{
+      const at=parseFloat(el.dataset.at||'.2');
+      const o=reduceMotion?1:beatOpacity(p,at);
+      el.style.opacity=o.toFixed(3);
+      if(o>.08)el.classList.add('is-on');else el.classList.remove('is-on');
+    });
+    const distance=Math.abs(rect.top+rect.height/2-innerHeight/2);
+    if(distance<best){best=distance;active=scene.id}
+    if(stage)stage.style.setProperty('--local-progress',p.toFixed(3));
+  }
+  navLinks.forEach(a=>a.classList.toggle('active',a.dataset.id===active));
+  raf=0;
+}
+function requestUpdate(){if(!raf)raf=requestAnimationFrame(update)}
+addEventListener('scroll',requestUpdate,{passive:true});addEventListener('resize',requestUpdate);update();
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>tone(410,.04)));
+const soundBtn=document.getElementById('soundToggle');soundBtn?.addEventListener('click',()=>{soundOn=!soundOn;soundBtn.querySelector('b').textContent=soundOn?'ON':'OFF';tone(620,.08);showToast(soundOn?'Sonido suave activado':'Sonido desactivado')});
+
+document.querySelectorAll('#scienceButtons button').forEach((btn,i)=>btn.addEventListener('click',()=>{document.querySelectorAll('#scienceButtons button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('scienceOutput').textContent=btn.dataset.copy;tone(520+i*70,.06)}));
+
+const form=document.getElementById('predictionForm'),input=document.getElementById('predictionInput'),result=document.getElementById('predictionResult');
+try{const saved=localStorage.getItem('evolucion-prediccion-v2');if(saved){input.value=saved;result.textContent=`“${saved}”`}}catch{}
+form?.addEventListener('submit',e=>{e.preventDefault();const value=input.value.trim();if(!value){showToast('Escribe primero una predicción.');return}try{localStorage.setItem('evolucion-prediccion-v2',value)}catch{}result.textContent=`“${value}”`;showToast('Tu viñeta quedó guardada.');tone(720,.09)});
+
+addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))return;const ids=scenes.map(s=>s.id);let idx=ids.indexOf(navLinks.find(a=>a.classList.contains('active'))?.dataset.id);if(e.key==='ArrowDown'||e.key==='ArrowRight'){idx=Math.min(ids.length-1,Math.max(0,idx+1));document.getElementById(ids[idx])?.scrollIntoView({behavior:reduceMotion?'auto':'smooth'})}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){idx=Math.max(0,idx-1);document.getElementById(ids[idx])?.scrollIntoView({behavior:reduceMotion?'auto':'smooth'})}});
