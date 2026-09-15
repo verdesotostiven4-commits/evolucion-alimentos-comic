@@ -50,12 +50,8 @@
           <p>Los primeros seres humanos se alimentaban con lo que encontraban en su entorno: frutos, raíces, semillas y otros recursos naturales. Con el tiempo aprendieron a cazar y pescar, ampliando sus fuentes de alimento.</p>
           <div class="fact"><strong>Idea clave</strong><span>La alimentación dependía directamente de la naturaleza y de la capacidad para recolectar, cazar y pescar.</span></div>
         </div>
-        <div class="comic-stage reveal" aria-label="Escena de la prehistoria">
-          <div class="sun"></div>
-          <div class="mountain m1"></div><div class="mountain m2"></div>
-          <div class="cave"></div>
-          <div class="character hunter">🧑🏽</div>
-          <div class="object berry">🫐</div><div class="object fish">🐟</div>
+        <div class="comic-stage reveal" aria-label="Escena ilustrada de la prehistoria">
+          <img class="scene-art" src="assets/prehistoria.svg" alt="Recolector prehistórico junto a una fogata, frutos y peces" />
           <div class="speech speech-left">“Aquí no hay menú… hoy comemos lo que podamos encontrar.”</div>
           <button class="discover" data-pop="prehistoria">Toca para descubrir</button>
         </div>
@@ -76,10 +72,8 @@
           <p>La agricultura permitió cultivar plantas y domesticar animales. Así, las comunidades pudieron contar con alimentos de manera más constante, establecerse en un lugar y formar poblaciones cada vez mayores.</p>
           <div class="fact"><strong>Gran cambio</strong><span>De buscar comida cada día a producirla y almacenarla.</span></div>
         </div>
-        <div class="comic-stage field-stage reveal">
-          <div class="field-lines"></div>
-          <div class="farmhouse">⌂</div><div class="character farmer">🧑🏽‍🌾</div>
-          <div class="crop crop1">🌾</div><div class="crop crop2">🌾</div><div class="crop crop3">🌾</div>
+        <div class="comic-stage field-stage reveal" aria-label="Escena ilustrada del nacimiento de la agricultura">
+          <img class="scene-art" src="assets/agricultura.svg" alt="Agricultor, cultivos y una aldea temprana" />
           <div class="speech speech-right">“Si sembramos hoy, podremos comer mañana.”</div>
           <button class="grow-button" id="growButton">🌱 Hacer crecer el cultivo</button>
         </div>
@@ -95,9 +89,8 @@
           <p>Cuando las civilizaciones crecieron, también aumentó el intercambio entre regiones. Ingredientes, técnicas y costumbres culinarias comenzaron a viajar junto con comerciantes y exploradores.</p>
           <div class="fact"><strong>Resultado</strong><span>Nuevos sabores llegaron a distintas culturas y las cocinas comenzaron a mezclarse.</span></div>
         </div>
-        <div class="comic-stage map-stage reveal">
-          <div class="mini-map"><i class="route route1"></i><i class="route route2"></i><span class="city c1">●</span><span class="city c2">●</span><span class="city c3">●</span><span class="ship">⛵</span></div>
-          <div class="trade-foods"><span>🧂</span><span>🍊</span><span>🌾</span><span>🫘</span></div>
+        <div class="comic-stage map-stage reveal" aria-label="Escena ilustrada del comercio de alimentos">
+          <img class="scene-art" src="assets/comercio.svg" alt="Barco, mercado y rutas comerciales de alimentos" />
           <div class="speech speech-left">“Una receta también puede cruzar fronteras.”</div>
         </div>
       </div>
@@ -112,10 +105,8 @@
           <p>La Revolución Industrial transformó la producción y distribución de alimentos. La mecanización agrícola, los nuevos transportes y las técnicas de conservación permitieron llevar comida a más personas y a mayores distancias.</p>
           <div class="fact"><strong>Nuevo escenario</strong><span>Más variedad y disponibilidad, junto con el crecimiento de los alimentos procesados.</span></div>
         </div>
-        <div class="comic-stage factory-stage reveal">
-          <div class="factory">▥<span></span><span></span><span></span></div>
-          <div class="gear g1">⚙</div><div class="gear g2">⚙</div>
-          <div class="train">🚂<i></i><i></i><i></i></div>
+        <div class="comic-stage factory-stage reveal" aria-label="Escena ilustrada de la Revolución Industrial">
+          <img class="scene-art" src="assets/industria.svg" alt="Fábrica y tren representando la producción y distribución masiva" />
           <div class="speech speech-right">“Ahora podemos producir más… y llevarlo mucho más lejos.”</div>
         </div>
       </div>
@@ -130,13 +121,13 @@
           <p>El estudio de la nutrición permitió comprender mejor los nutrientes y la importancia de una alimentación equilibrada. Al mismo tiempo, la tecnología alimentaria abrió nuevas posibilidades para conservar, procesar y producir alimentos.</p>
           <div class="fact"><strong>Aprendizaje</strong><span>No basta con comer: también importa qué nutrientes recibe nuestro cuerpo.</span></div>
         </div>
-        <div class="comic-stage lab-stage reveal">
-          <div class="microscope">🔬</div><div class="flask">🧪</div>
-          <div class="nutrition-wheel" id="nutritionWheel">
-            <button data-info="Vitaminas y minerales ayudan a regular múltiples funciones del organismo.">🥬</button>
-            <button data-info="Las proteínas participan en el crecimiento y reparación de tejidos.">🥚</button>
-            <button data-info="Los carbohidratos son una fuente importante de energía.">🍞</button>
-            <button data-info="Las frutas aportan agua, fibra, vitaminas y otros compuestos.">🍎</button>
+        <div class="comic-stage lab-stage reveal" aria-label="Escena ilustrada de ciencia y nutrición">
+          <img class="scene-art" src="assets/ciencia.svg" alt="Laboratorio, microscopio y estudio de nutrientes" />
+          <div class="nutrition-wheel" id="nutritionWheel" aria-label="Explora grupos de alimentos">
+            <button data-info="Vitaminas y minerales ayudan a regular múltiples funciones del organismo." aria-label="Vegetales">🥬</button>
+            <button data-info="Las proteínas participan en el crecimiento y reparación de tejidos." aria-label="Proteínas">🥚</button>
+            <button data-info="Los carbohidratos son una fuente importante de energía." aria-label="Carbohidratos">🍞</button>
+            <button data-info="Las frutas aportan agua, fibra, vitaminas y otros compuestos." aria-label="Frutas">🍎</button>
           </div>
           <p class="nutrition-info" id="nutritionInfo">Toca un alimento para aprender algo.</p>
         </div>
@@ -152,9 +143,8 @@
           <p>Hoy existe mayor interés por una alimentación saludable y sostenible. Se promueve el consumo de productos frescos y naturales, una dieta equilibrada y decisiones que reduzcan el impacto ambiental.</p>
           <div class="fact"><strong>Desafío actual</strong><span>Aprovechar la tecnología sin olvidar la salud, la diversidad y la sostenibilidad.</span></div>
         </div>
-        <div class="comic-stage future-stage reveal">
-          <div class="planet">🌍</div>
-          <div class="future-icons"><span>🌱</span><span>🥗</span><span>♻️</span><span>🧬</span></div>
+        <div class="comic-stage future-stage reveal" aria-label="Escena ilustrada sobre alimentación sostenible">
+          <img class="scene-art" src="assets/actualidad.svg" alt="Planeta, agricultura urbana y sostenibilidad" />
           <div class="speech speech-right">“Nuestra próxima gran decisión no es solo qué comer… sino cómo producirlo.”</div>
         </div>
       </div>
