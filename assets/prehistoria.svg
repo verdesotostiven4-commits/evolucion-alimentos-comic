@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="t d">
+<title id="t">Escena de alimentación en la prehistoria</title><desc id="d">Paisaje con recolector, fogata, peces y frutos.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e7b76f"/><stop offset="1" stop-color="#8c5f39"/></linearGradient><filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".18"/></filter></defs>
+<rect width="800" height="600" fill="url(#sky)"/>
+<circle cx="650" cy="105" r="62" fill="#ffd66e" opacity=".9"/>
+<path d="M0 332 142 176 290 332Z" fill="#71513c" opacity=".72"/><path d="M170 332 380 116 575 332Z" fill="#563d31" opacity=".74"/><path d="M430 332 620 183 800 332Z" fill="#72513d" opacity=".7"/>
+<path d="M0 300C130 270 254 326 390 294s279-44 410 8v298H0Z" fill="#4c3928"/>
+<path d="M0 402c124-50 203 32 324-8 128-43 222-24 476 40v166H0Z" fill="#2f2b20"/>
+<ellipse cx="154" cy="432" rx="126" ry="77" fill="#1d1d18"/><path d="M55 430c22-84 95-132 190-112 35 8 73 31 94 57-61-17-130-5-167 55Z" fill="#30261f"/>
+<g filter="url(#sh)"><circle cx="454" cy="329" r="38" fill="#7f4e34"/><path d="M429 371c-28 54-31 116-16 161h89c11-47 3-105-27-160Z" fill="#b9743f"/><path d="m427 405-54 55" stroke="#4b2f24" stroke-width="18" stroke-linecap="round"/><path d="m483 407 55 48" stroke="#4b2f24" stroke-width="18" stroke-linecap="round"/><path d="m433 526-38 54M481 526l38 54" stroke="#3b2a22" stroke-width="20" stroke-linecap="round"/><path d="M425 312c12-36 54-50 86-24-11 8-20 13-31 15-19 5-36 9-55 9Z" fill="#2a201c"/></g>
+<g><path d="M614 512c24-58 44-77 62-86-7 32-4 54 6 86Z" fill="#6b8d43"/><circle cx="661" cy="437" r="12" fill="#5b2c6f"/><circle cx="691" cy="456" r="11" fill="#6c3483"/><circle cx="648" cy="469" r="10" fill="#512e5f"/></g>
+<g transform="translate(265 471)"><path d="M0 0c32-31 68-32 96-2-29 31-64 34-96 2Z" fill="#76b9c7"/><path d="m93 0 34-24v48Z" fill="#4f909e"/><circle cx="28" cy="-5" r="4" fill="#17373e"/></g>
+<g transform="translate(553 493)"><path d="M0 42c26-71 47-71 72 0Z" fill="#ec7b42"/><path d="M18 44c15-43 26-43 38 0Z" fill="#ffd36a"/></g>
+</svg>
